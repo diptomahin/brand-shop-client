@@ -3,7 +3,7 @@ const Choice = () => {
     return (
         <div className="w-11/12 mx-auto text-center rounded-xl p-10 mt-10 ">
             <h1 className="text-3xl  font-bold ">Why Choose <span className="text-[#004AAD]">Tech fusion</span>?</h1>
-            <div className="grid grid-cols-2 gap-5 mt-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8">
                 <div className="bg-blue-400 rounded-lg p-8 text-white">
                     <p>
                         <span className="text-xl font-semibold"> Diverse Selection</span>: We take pride in our diverse selection of gadgets, ranging from the latest smartphones to cutting-edge smart home devices, wearables, and more.
