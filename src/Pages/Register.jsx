@@ -16,6 +16,21 @@ const Register = () => {
     const password = form.get("password")
     console.log(email, password, name, photo)
     setErrorMessage('')
+  // /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/
+    if(password.length<6){
+      setErrorMessage('Your Password Should Contain at least 6 characters')
+      return;
+    }
+    else if (!/[A-Z]/.test(password)){
+      setErrorMessage('Your Password Should Contain at least 1 one uppercase letter')
+      return;
+    }
+
+    else if(!/[!@#$%^&*]/.test(password))
+    {
+      setErrorMessage('Your Password Should Contain at least 1 one special character')
+      return;
+    }
 
     createUser(email, password)
       .then(result => {

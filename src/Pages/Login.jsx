@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 
@@ -6,25 +6,31 @@ const Login = () => {
     const { signIn, handleGoogleSignIn } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState('');
 
-    const handleLogin = e =>{
-      e.preventDefault();
-      console.log(e.currentTarget);
-      const form = new FormData(e.currentTarget);
-      const email = form.get('email');
-      const password = form.get('password');
-      console.log(email, password);
-      signIn(email, password)
-          .then(result => {
-              console.log(result.user)
-              navigate(location?.state ? location.state : '/');
+    const handleLogin = e => {
+        e.preventDefault();
+        console.log(e.currentTarget);
+        const form = new FormData(e.currentTarget);
+        const email = form.get('email');
+        const password = form.get('password');
+        console.log(email, password);
 
-          })
-          .catch(error => {
-              console.error(error);
-          })
+        setErrorMessage('');
 
-        }
+
+        signIn(email, password)
+            .then(result => {
+                console.log(result.user)
+                navigate(location?.state ? location.state : '/');
+
+            })
+            .catch(error => {
+                console.log(error.message);
+                setErrorMessage(error.message);
+            })
+
+    }
     return (
         <div className="hero min-h-screen my-8 w-11/12 mx-auto rounded-lg bg-blue-200">
             <div className="hero-content flex flex-col ">
@@ -50,7 +56,15 @@ const Login = () => {
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn mb-2" style={{ backgroundColor: "#004AAD", color: "white" }}>Login</button>
-                            <button onClick={handleGoogleSignIn}  className="btn" style={{ backgroundColor: "#004AAD", color: "white" }}>Login With Google</button>
+                            <button onClick={handleGoogleSignIn} className="btn" style={{ backgroundColor: "#004AAD", color: "white" }}>Login With Google</button>
+                            {
+                                errorMessage ?
+                                    <div className="my-3 ">
+                                        <p className="text-red-500 text-sm">{errorMessage}</p>
+                                    </div>
+                                    :
+                                    <div></div>
+                            }
                             <p className="mt-5 text-xs">Do not Have an account???<span className="text-[#004AAD]"><Link to='/register'>Register Now!</Link></span></p>
                         </div>
                     </form>
