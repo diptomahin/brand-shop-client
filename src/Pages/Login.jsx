@@ -1,6 +1,30 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const Login = () => {
+    const { signIn, handleGoogleSignIn } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const handleLogin = e =>{
+      e.preventDefault();
+      console.log(e.currentTarget);
+      const form = new FormData(e.currentTarget);
+      const email = form.get('email');
+      const password = form.get('password');
+      console.log(email, password);
+      signIn(email, password)
+          .then(result => {
+              console.log(result.user)
+              navigate(location?.state ? location.state : '/');
+
+          })
+          .catch(error => {
+              console.error(error);
+          })
+
+        }
     return (
         <div className="hero min-h-screen my-8 w-11/12 mx-auto rounded-lg bg-blue-200">
             <div className="hero-content flex flex-col ">
@@ -8,7 +32,7 @@ const Login = () => {
                     <h1 className="text-5xl font-bold text-white"><span className="text-[#004AAD]">Login</span> now!</h1>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <form  className="card-body">
+                    <form onSubmit={handleLogin} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -26,7 +50,7 @@ const Login = () => {
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn mb-2" style={{ backgroundColor: "#004AAD", color: "white" }}>Login</button>
-                            <button  className="btn" style={{ backgroundColor: "#004AAD", color: "white" }}>Login With Google</button>
+                            <button onClick={handleGoogleSignIn}  className="btn" style={{ backgroundColor: "#004AAD", color: "white" }}>Login With Google</button>
                             <p className="mt-5 text-xs">Do not Have an account???<span className="text-[#004AAD]"><Link to='/register'>Register Now!</Link></span></p>
                         </div>
                     </form>

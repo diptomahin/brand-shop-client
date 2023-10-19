@@ -1,6 +1,20 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const NavBar = () => {
+
+    
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleSignOut = () => {
+        logOut()
+            .then()
+            .catch()
+    }
+
+
+
     const NavLinks = <>
         <li><NavLink className="py-3 font-bold" style={({ isActive }) => {
             return {
@@ -55,7 +69,20 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className={`navbar-end`}>
-                <Link to='/login' className={'btn text-[#1786F9] hover:text-white hover:bg-[#004AAD]'}>Login</Link>
+            {
+                
+            }
+            {
+                    user ?
+                        <div className="flex flex-col lg:flex-row gap-2">
+                        <img className="rounded-3xl w-18 h-14" src={user.photoURL} alt="" />
+                        <p className=" my-auto">{user.displayName}</p>
+                        <button onClick={handleSignOut}  className="btn text-[#1786F9] hover:text-white hover:bg-[#004AAD]">Sign Out</button>
+                        </div>
+                        :
+                        <Link to='/login' className={'btn text-[#1786F9] hover:text-white hover:bg-[#004AAD]'}>Login</Link>
+            }
+               
             </div>
         </div>
     );
