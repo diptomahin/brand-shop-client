@@ -7,6 +7,7 @@ import MyCart from "../Pages/MyCart";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import PrivetRoute from "./PrivateRoutes";
+import BrandProducts from "../Pages/BrandProducts";
 
 
 const router = createBrowserRouter([
@@ -35,6 +36,11 @@ const router = createBrowserRouter([
         {
             path:"/register",
             element:<Register></Register>,
+        },
+        {
+            path:"/brandProducts/:id",
+            element:<PrivetRoute><BrandProducts></BrandProducts></PrivetRoute>,
+            loader: () => fetch('products.json'),
         }
       ]
     },
