@@ -2,26 +2,28 @@
 import { PropTypes } from 'prop-types';
 
 
-const BrandProduct = ({brandProduct}) => {
-    const {Name, Type, Price, Image} = brandProduct
+const BrandProduct = ({ brandProduct }) => {
+    const { name, Brand, Type, rating, Price, Image } = brandProduct
     return (
-        <div className=' py-8'>
-            <div className="card  bg-base-100 shadow-xl">
-                <figure className="mb-3">
-                    <img  src={Image} alt="" className="rounded-xl w-full h-72" />
-                </figure>
-            </div>
-            <div className='bg-[#004AAD] rounded-lg  text-white text-center'>
-                <h1 className="text-3xl py-5  font-bold">{Name}</h1>
-                <p>{Price}</p>
-                <p>{Type}</p>
+        <div className="card grid grid-cols-2 bg-base-100  shadow-xl">
+            <figure><img src={Image} alt="Album" /></figure>
+            <div className="card-body text-start">
+                <h2 className="card-title">{name}</h2>
+                <p>Category : {Type}</p>
+                <p>Brand : {Brand}</p>
+                <p>Rating : {rating}</p>
+                <p>Price : {Price}</p>
+                <div className="card-actions ">
+                    <button className="btn text-[#1786F9] hover:text-white hover:bg-[#004AAD]">Details</button>
+                    <button className="btn text-[#1786F9] hover:text-white hover:bg-[#004AAD]">Update</button>
+                </div>
             </div>
         </div>
     );
 };
 
 
-BrandProduct.propTypes={
+BrandProduct.propTypes = {
     brandProduct: PropTypes.object
 }
 

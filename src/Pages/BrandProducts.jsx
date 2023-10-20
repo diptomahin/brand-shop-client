@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 
 import { useParams } from 'react-router-dom';
 import BrandProduct from "../Components/BrandProduct";
+import Slider from "../Components/Slider";
 
 const BrandProducts = () => {
     const brands = useLoaderData()
@@ -19,8 +20,10 @@ const BrandProducts = () => {
     }, []);
     console.log(brandProducts)
     return (
-        <div className="w-11/12 mx-auto text-center">
-            <h2>Here are the products of : {brand.brandName}  </h2>
+        <div>
+            <Slider></Slider>
+            <div className="w-11/12 mx-auto text-center">
+            <h2 className="text-4xl text-[#004AAD] font-bold"> {brand.brandName}  </h2>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             {
                 brandProducts.filter(filteredBrandProducts =>filteredBrandProducts.Brand == brand.brandName).map(brandProduct => (
@@ -28,6 +31,7 @@ const BrandProducts = () => {
                 ))
             }
             </div>
+        </div>
         </div>
     );
 };
