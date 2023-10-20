@@ -38,10 +38,15 @@ const router = createBrowserRouter([
             element:<Register></Register>,
         },
         {
-            path:"/brandProducts/:id",
+            path:"/brand/:id",
             element:<PrivetRoute><BrandProducts></BrandProducts></PrivetRoute>,
-            loader: () => fetch('products.json'),
+            loader: () => fetch('brands.json')
         }
+        // {
+        //     path:"/brand/:id",
+        //     element:<PrivetRoute><BrandProducts></BrandProducts></PrivetRoute>,
+        //     loader: () => fetch('products.json'),
+        // }
       ]
     },
   ]);

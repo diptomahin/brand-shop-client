@@ -6,7 +6,6 @@ import Brands from "../Components/Brands/Brands";
 
 const Home = () => {
     const brands = useLoaderData() 
-    console.log(brands)
     return (
         <div>
             <Banner></Banner>
