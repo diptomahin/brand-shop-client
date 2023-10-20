@@ -13,7 +13,7 @@ const BrandProducts = () => {
     const [brandProducts, setBrandProducts] = useState([]);
 
     useEffect(() => {
-        fetch('../../public/products.json')
+        fetch('')
             .then(res => res.json())
             .then(data => setBrandProducts(data));
     }, []);

@@ -37,6 +37,7 @@ const router = createBrowserRouter([
             path:"/register",
             element:<Register></Register>,
         },
+        
         {
             path:"/brand/:id",
             element:<PrivetRoute><BrandProducts></BrandProducts></PrivetRoute>,
