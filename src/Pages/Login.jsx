@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
-
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 const Login = () => {
     const { signIn, handleGoogleSignIn } = useContext(AuthContext);
     const location = useLocation();
@@ -29,6 +30,7 @@ const Login = () => {
                 console.log(error.message);
                 setErrorMessage(error.message);
             })
+        toast("Your Login is  Successful");
 
     }
     return (
@@ -70,7 +72,7 @@ const Login = () => {
                     </form>
                 </div>
             </div>
-
+            <ToastContainer/>
         </div>
     );
 };

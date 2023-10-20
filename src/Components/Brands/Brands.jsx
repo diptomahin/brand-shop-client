@@ -18,6 +18,6 @@ const Brands = ({brands}) => {
 
 
 Brands.propTypes ={
-    brands: PropTypes.object
+    brands: PropTypes.array
 }
 export default Brands;

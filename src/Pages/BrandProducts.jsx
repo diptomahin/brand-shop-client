@@ -10,7 +10,7 @@ const BrandProducts = () => {
     const { id } = useParams();
     const idInt = parseInt(id);
     const brand = brands.find(brand => brand.id == idInt)
-    console.log(brand)
+    // console.log(brand)
     const [brandProducts, setBrandProducts] = useState([]);
 
     useEffect(() => {

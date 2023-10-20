@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 
 const Brand = ({ brand }) => {
-    const { brandName, img } = brand;
+    const { id, brandName, img } = brand;
 
     return (
-        <Link to={`/brand/${brand.id}`}>
+        <Link to={`/brand/${id}`}>
         <div className=' py-8'>
             <div className="card  bg-base-100 shadow-xl">
                 <figure className="mb-3">
