@@ -47,12 +47,12 @@ const router = createBrowserRouter([
         {
             path:"/products/:id",
             element:<PrivetRoute><ProductDetails></ProductDetails></PrivetRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+            loader: ({params}) => fetch(`https://brandshop-server-r7ko1my4a-mahin-ahmeds-projects.vercel.app/products/${params.id}`)
         },
         {
             path:"/Update/:id",
             element:<PrivetRoute><UpdateProducts></UpdateProducts></PrivetRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+            loader: ({params}) => fetch(`https://brandshop-server-r7ko1my4a-mahin-ahmeds-projects.vercel.app/products/${params.id}`)
         },
       ]
     },

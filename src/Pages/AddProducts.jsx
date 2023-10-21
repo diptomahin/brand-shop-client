@@ -1,4 +1,4 @@
-
+import Swal from 'sweetalert2'
 const AddProducts = () => {
     const handleAddProducts = event => {
         event.preventDefault();
@@ -17,7 +17,7 @@ const AddProducts = () => {
         // send data to the server
 
 
-        fetch("http://localhost:5000/products", {
+        fetch("https://brandshop-server-r7ko1my4a-mahin-ahmeds-projects.vercel.app/products", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -27,6 +27,14 @@ const AddProducts = () => {
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
+                if(data.insertedId){
+                    Swal.fire({
+                        title: 'Success!!',
+                        text: 'Your Product is added',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                      })
+                }
             });
     }
     return (

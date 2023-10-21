@@ -1,8 +1,15 @@
 import { useLoaderData} from "react-router-dom";
+import { saveProduct } from "../utility/localStorage";
 
 const ProductDetails = () => {
      const product = useLoaderData();
-     const { Description ,name, Brand, Type, rating, Price, Image } = product ;
+     const {_id, Description ,name, Brand, Type, rating, Price, Image } = product ;
+     
+
+     const handleCart = () =>{
+        saveProduct(_id);
+       
+     }
     return (
         <div className="card grid grid-cols-1 bg-base-100  shadow-xl py-10">
             <figure><img src={Image} alt="Album" /></figure>
@@ -16,7 +23,7 @@ const ProductDetails = () => {
                 <p>Price : {Price}</p>
                 </div>
                 <div className="card-actions my-6 ">
-                    <button className="btn w-full border-blue-600 text-[#1786F9] hover:text-white hover:bg-[#004AAD]">Add to cart</button>
+                    <button onClick={handleCart} className="btn w-full border-blue-600 text-[#1786F9] hover:text-white hover:bg-[#004AAD]">Add to cart</button>
                 </div>
             </div>
         </div>
