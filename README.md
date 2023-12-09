@@ -1,5 +1,5 @@
 # Tech Fusion
-# live-link: https://brandshop-client-9bd90.web.app
+# live-link: https://cool-sundae-a30382.netlify.app/
 * It is tech website that sells products from different renowned brands.
 * when a user clicks on a brand it takes them to a private protected route which shows products of that brand. new Products can be added to the database by filling the form of Add product page.
 * If a user adds a product to cart it chows on my cart page for that user.
